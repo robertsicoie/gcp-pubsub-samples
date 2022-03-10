@@ -38,7 +38,7 @@ echo {\'topic\':\'projects/$PROJECT/topics/$TOPIC\'} > /tmp/data; curl -H 'conte
 
 Publish message:
 ```bash
-export MESSAGE=`echo This is my message to you-ou-ou | base64`; echo {\'messages\': [{\'data\': \'$MESSAGE\'}]} > /tmp/data; curl -H 'content-type: application/json' -H "Authorization: Bearer $ACCESS_TOKEN" -X POST --data @/tmp/data https://pubsub.googleapis.com/v1/projects/$PROJECT/topics/$TOPIC:publish
+export MESSAGE=`echo This is my message to you-ou-ou | base64`; echo "{'messages': [{'data': '$MESSAGE'}]}" > /tmp/data; curl -H 'content-type: application/json' -H "Authorization: Bearer $ACCESS_TOKEN" -X POST --data @/tmp/data https://pubsub.googleapis.com/v1/projects/$PROJECT/topics/$TOPIC:publish
 ```
 
 Pull message:
